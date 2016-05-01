@@ -1,0 +1,15 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib",
+  "scripts": {
+    "start": "node lib",
+    "test": "gulp test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "restify": "^4.0.4"
+  }
+}
