@@ -1,46 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
-namespace WebAPIApplication
+namespace NancyApplication
 {
+    using Microsoft.AspNet.Builder;
+    using Nancy.Owin;
+    using RabbitMQ.Client;
+ 
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            // Set up configuration sources.
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
+            app.UseOwin(x => x.UseNancy());
+            
+            var factory = new ConnectionFactory();
+            factory.Uri = "amqp://guest:guest@rabbitmq:5672/";
 
-        public IConfigurationRoot Configuration { get; set; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddMvc();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            app.UseIISPlatformHandler();
-
-            app.UseStaticFiles();
-
-            app.UseMvc();
+            IConnection conn = factory.CreateConnection();
+            var channel = conn.CreateModel();
+            
         }
 
         // Entry point for the application.
