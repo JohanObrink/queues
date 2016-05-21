@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PaymentProcessor.Models.Payment>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!doctype html />
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+    </head>
+<body>
+    
+        <ul>
+            @foreach(var payment in Model)
+            {
+                <li>
+                    <form method="post">
+                        <div>Id: @payment.Id</div>
+                        <div>Order number: @payment.OrderNumber</div>
+                        <div>Status: @payment.Status</div>
+                        <div>Amount: SEK @(payment.Amount / 100)</div>
+                        <div>Sent: @payment.SentForPayment</div>
+                        <div>Recieved: @payment.ResponseRecieved</div>
+                        @if (payment.Status == PaymentProcessor.Models.PaymentStatus.Pending)
+                        {
+                            <input type="hidden" name="id" value="@payment.Id" />
+                            <input type="submit" name="result" value="Success" />
+                            <input type="submit" name="result" value="Fail" />
+                        }
+                    </form>
+                </li>
+            }
+        </ul>
+    </form>
+</body>
+</html>

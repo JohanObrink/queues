@@ -6,16 +6,13 @@ node:
     - "4000:4000"
   links:
     - rabbitmq
-net:
-  build: ./net
-  environment:
-    - 'PORT=5000'
-  ports:
-    - "5000:5000"
-  links:
-    - rabbitmq
 rabbitmq:
-  image: rabbitmq:3.6.1
+  image: rabbitmq:3.6-management
   ports:
     - "8080:8080"
+    - "5672:5672"
     - "15672:15672"
+redis:
+  image: redis:3
+  ports:
+    - "6379:6379"
