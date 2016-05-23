@@ -12,7 +12,8 @@ rabbitmq:
     - "8080:8080"
     - "5672:5672"
     - "15672:15672"
-redis:
-  image: redis:3
+rethinkdb:
+  image: rethinkdb:2.3.2
   ports:
-    - "6379:6379"
+    - "8081:8080"
+    - "28015:28015"

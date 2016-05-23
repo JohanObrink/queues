@@ -1348,6 +1348,15 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "protobuf-net/2.0.0.666": {
+        "type": "package",
+        "compile": {
+          "lib/net40/protobuf-net.dll": {}
+        },
+        "runtime": {
+          "lib/net40/protobuf-net.dll": {}
+        }
+      },
       "RabbitMQ.Client/3.6.2": {
         "type": "package",
         "compile": {
@@ -1357,47 +1366,30 @@
           "lib/net45/RabbitMQ.Client.dll": {}
         }
       },
-      "ServiceStack.Common/4.0.56": {
+      "rethinkdb-net/0.12.1": {
         "type": "package",
         "dependencies": {
-          "ServiceStack.Interfaces": "4.0.56",
-          "ServiceStack.Text": "4.0.56"
+          "protobuf-net": "2.0.0.666"
         },
         "compile": {
-          "lib/net40/ServiceStack.Common.dll": {}
+          "lib/net45/RethinkDb.dll": {}
         },
         "runtime": {
-          "lib/net40/ServiceStack.Common.dll": {}
+          "lib/net45/RethinkDb.dll": {}
         }
       },
-      "ServiceStack.Interfaces/4.0.56": {
-        "type": "package",
-        "compile": {
-          "lib/portable-wp80+sl5+net40+win8+wpa81+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/portable-wp80+sl5+net40+win8+wpa81+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
-        }
-      },
-      "ServiceStack.Redis/4.0.56": {
+      "rethinkdb-net-newtonsoft/0.12.1": {
         "type": "package",
         "dependencies": {
-          "ServiceStack.Common": "4.0.56"
+          "Newtonsoft.Json": "5.0.8",
+          "protobuf-net": "2.0.0.666",
+          "rethinkdb-net": "0.12.1"
         },
         "compile": {
-          "lib/net40/ServiceStack.Redis.dll": {}
+          "lib/net45/RethinkDb.Newtonsoft.dll": {}
         },
         "runtime": {
-          "lib/net40/ServiceStack.Redis.dll": {}
-        }
-      },
-      "ServiceStack.Text/4.0.56": {
-        "type": "package",
-        "compile": {
-          "lib/net40/ServiceStack.Text.dll": {}
-        },
-        "runtime": {
-          "lib/net40/ServiceStack.Text.dll": {}
+          "lib/net45/RethinkDb.Newtonsoft.dll": {}
         }
       },
       "System.Collections/4.0.0": {
@@ -2961,6 +2953,15 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "protobuf-net/2.0.0.666": {
+        "type": "package",
+        "compile": {
+          "lib/net40/protobuf-net.dll": {}
+        },
+        "runtime": {
+          "lib/net40/protobuf-net.dll": {}
+        }
+      },
       "RabbitMQ.Client/3.6.2": {
         "type": "package",
         "compile": {
@@ -2970,47 +2971,30 @@
           "lib/net45/RabbitMQ.Client.dll": {}
         }
       },
-      "ServiceStack.Common/4.0.56": {
+      "rethinkdb-net/0.12.1": {
         "type": "package",
         "dependencies": {
-          "ServiceStack.Interfaces": "4.0.56",
-          "ServiceStack.Text": "4.0.56"
+          "protobuf-net": "2.0.0.666"
         },
         "compile": {
-          "lib/net40/ServiceStack.Common.dll": {}
+          "lib/net45/RethinkDb.dll": {}
         },
         "runtime": {
-          "lib/net40/ServiceStack.Common.dll": {}
+          "lib/net45/RethinkDb.dll": {}
         }
       },
-      "ServiceStack.Interfaces/4.0.56": {
-        "type": "package",
-        "compile": {
-          "lib/portable-wp80+sl5+net40+win8+wpa81+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/portable-wp80+sl5+net40+win8+wpa81+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
-        }
-      },
-      "ServiceStack.Redis/4.0.56": {
+      "rethinkdb-net-newtonsoft/0.12.1": {
         "type": "package",
         "dependencies": {
-          "ServiceStack.Common": "4.0.56"
+          "Newtonsoft.Json": "5.0.8",
+          "protobuf-net": "2.0.0.666",
+          "rethinkdb-net": "0.12.1"
         },
         "compile": {
-          "lib/net40/ServiceStack.Redis.dll": {}
+          "lib/net45/RethinkDb.Newtonsoft.dll": {}
         },
         "runtime": {
-          "lib/net40/ServiceStack.Redis.dll": {}
-        }
-      },
-      "ServiceStack.Text/4.0.56": {
-        "type": "package",
-        "compile": {
-          "lib/net40/ServiceStack.Text.dll": {}
-        },
-        "runtime": {
-          "lib/net40/ServiceStack.Text.dll": {}
+          "lib/net45/RethinkDb.Newtonsoft.dll": {}
         }
       },
       "System.Collections/4.0.0": {
@@ -4574,6 +4558,15 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "protobuf-net/2.0.0.666": {
+        "type": "package",
+        "compile": {
+          "lib/net40/protobuf-net.dll": {}
+        },
+        "runtime": {
+          "lib/net40/protobuf-net.dll": {}
+        }
+      },
       "RabbitMQ.Client/3.6.2": {
         "type": "package",
         "compile": {
@@ -4583,47 +4576,30 @@
           "lib/net45/RabbitMQ.Client.dll": {}
         }
       },
-      "ServiceStack.Common/4.0.56": {
+      "rethinkdb-net/0.12.1": {
         "type": "package",
         "dependencies": {
-          "ServiceStack.Interfaces": "4.0.56",
-          "ServiceStack.Text": "4.0.56"
+          "protobuf-net": "2.0.0.666"
         },
         "compile": {
-          "lib/net40/ServiceStack.Common.dll": {}
+          "lib/net45/RethinkDb.dll": {}
         },
         "runtime": {
-          "lib/net40/ServiceStack.Common.dll": {}
+          "lib/net45/RethinkDb.dll": {}
         }
       },
-      "ServiceStack.Interfaces/4.0.56": {
-        "type": "package",
-        "compile": {
-          "lib/portable-wp80+sl5+net40+win8+wpa81+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/portable-wp80+sl5+net40+win8+wpa81+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
-        }
-      },
-      "ServiceStack.Redis/4.0.56": {
+      "rethinkdb-net-newtonsoft/0.12.1": {
         "type": "package",
         "dependencies": {
-          "ServiceStack.Common": "4.0.56"
+          "Newtonsoft.Json": "5.0.8",
+          "protobuf-net": "2.0.0.666",
+          "rethinkdb-net": "0.12.1"
         },
         "compile": {
-          "lib/net40/ServiceStack.Redis.dll": {}
+          "lib/net45/RethinkDb.Newtonsoft.dll": {}
         },
         "runtime": {
-          "lib/net40/ServiceStack.Redis.dll": {}
-        }
-      },
-      "ServiceStack.Text/4.0.56": {
-        "type": "package",
-        "compile": {
-          "lib/net40/ServiceStack.Text.dll": {}
-        },
-        "runtime": {
-          "lib/net40/ServiceStack.Text.dll": {}
+          "lib/net45/RethinkDb.Newtonsoft.dll": {}
         }
       },
       "System.Collections/4.0.0": {
@@ -5908,6 +5884,55 @@
         "tools/install.ps1"
       ]
     },
+    "protobuf-net/2.0.0.666": {
+      "type": "package",
+      "sha512": "TB15rCsNU7WyCNJwAO9G8SjXmX9Vw348TTLGsu07XRB2c6JB9GDzaTrqYjRi/kQmk4TT0fS/5sd0eglLsYafsg==",
+      "files": [
+        "lib/net20/protobuf-net.dll",
+        "lib/net20/protobuf-net.pdb",
+        "lib/net20/protobuf-net.xml",
+        "lib/net20-cf/protobuf-net.dll",
+        "lib/net20-cf/protobuf-net.pdb",
+        "lib/net20-cf/protobuf-net.xml",
+        "lib/net30/protobuf-net.dll",
+        "lib/net30/protobuf-net.pdb",
+        "lib/net30/protobuf-net.xml",
+        "lib/net35/protobuf-net.dll",
+        "lib/net35/protobuf-net.pdb",
+        "lib/net35/protobuf-net.xml",
+        "lib/net35-cf/protobuf-net.dll",
+        "lib/net35-cf/protobuf-net.pdb",
+        "lib/net35-cf/protobuf-net.xml",
+        "lib/net40/protobuf-net.dll",
+        "lib/net40/protobuf-net.pdb",
+        "lib/net40/protobuf-net.xml",
+        "lib/net40-cf/protobuf-net.dll",
+        "lib/net40-cf/protobuf-net.pdb",
+        "lib/net40-cf/protobuf-net.xml",
+        "lib/netcore45/protobuf-net.dll",
+        "lib/netcore45/protobuf-net.pdb",
+        "lib/netcore45/protobuf-net.pri",
+        "lib/netcore45/protobuf-net.XML",
+        "lib/portable-sl4+net40+wp7+windows8/protobuf-net.dll",
+        "lib/portable-sl4+net40+wp7+windows8/protobuf-net.pdb",
+        "lib/portable-sl4+net40+wp7+windows8/protobuf-net.xml",
+        "lib/sl3-wp/protobuf-net.dll",
+        "lib/sl3-wp/protobuf-net.pdb",
+        "lib/sl3-wp/protobuf-net.xml",
+        "lib/sl4/protobuf-net.dll",
+        "lib/sl4/protobuf-net.pdb",
+        "lib/sl4/protobuf-net.xml",
+        "lib/sl4-windowsphone71/protobuf-net.dll",
+        "lib/sl4-windowsphone71/protobuf-net.pdb",
+        "lib/sl4-windowsphone71/protobuf-net.xml",
+        "lib/windowsphone8/protobuf-net.dll",
+        "lib/windowsphone8/protobuf-net.pdb",
+        "lib/windowsphone8/protobuf-net.xml",
+        "protobuf-net.2.0.0.666.nupkg",
+        "protobuf-net.2.0.0.666.nupkg.sha512",
+        "protobuf-net.nuspec"
+      ]
+    },
     "RabbitMQ.Client/3.6.2": {
       "type": "package",
       "sha512": "5vvb0Ifjsx0owCVFp2WfB1BvpkLh6HzVMlvTD+if4TyZRfLCLk/GNr0zUQX28R6yP6CDfrFq4BaC8HGeLPhC0A==",
@@ -5922,50 +5947,32 @@
         "RabbitMQ.Client.nuspec~"
       ]
     },
-    "ServiceStack.Common/4.0.56": {
+    "rethinkdb-net/0.12.1": {
       "type": "package",
-      "sha512": "ca3hmgADVM0HDH7uex/JbHE5gLmUNOUE2lu2Yf1I5t6DFtXn1/Chr7PhwSvlFAzoh4TzC8Rl0wkOVlSh/ZCzTA==",
+      "sha512": "THvkWDJll4sRstakqW8PmXE8Gl1d96+jMgyZCuluDZEc8qx+/2WeHfob16YGVfnUv91UG1ncRHgf1rmdBidJCw==",
       "files": [
-        "lib/net40/ServiceStack.Common.dll",
-        "lib/net40/ServiceStack.Common.xml",
-        "ServiceStack.Common.4.0.56.nupkg",
-        "ServiceStack.Common.4.0.56.nupkg.sha512",
-        "ServiceStack.Common.nuspec"
+        "lib/LICENSE.txt",
+        "lib/net45/RethinkDb.dll",
+        "lib/net45/RethinkDb.dll.mdb",
+        "lib/README.md",
+        "lib/RELEASE-NOTES.md",
+        "rethinkdb-net.0.12.1.nupkg",
+        "rethinkdb-net.0.12.1.nupkg.sha512",
+        "rethinkdb-net.nuspec"
       ]
     },
-    "ServiceStack.Interfaces/4.0.56": {
+    "rethinkdb-net-newtonsoft/0.12.1": {
       "type": "package",
-      "sha512": "CqRs+u3mMIMrQrFvxmH8LCfYQfcVXz/B5KCaoO0sSji58hHoDTB/iECUWiUScbWWuAUbCq+5k+N4tLSBU1TRMw==",
+      "sha512": "/ykMkmiYTXwS5DOQZbith0PCite8JQPqRcyYx0vMOqvmcz4/1+ewm5/sHVhTpBTuN0ikMK+BpvkKAnX6dOR9zw==",
       "files": [
-        "lib/portable-wp80+sl5+net40+win8+wpa81+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll",
-        "ServiceStack.Interfaces.4.0.56.nupkg",
-        "ServiceStack.Interfaces.4.0.56.nupkg.sha512",
-        "ServiceStack.Interfaces.nuspec"
-      ]
-    },
-    "ServiceStack.Redis/4.0.56": {
-      "type": "package",
-      "sha512": "RcxC1vLYXL2vjfQ0nIYo3wETJGilzrxaXf/cqSsaDwtZeagdl559ZsnIjXukw0WfWT1wlcZ+5rHnxIiNshqrGg==",
-      "files": [
-        "lib/net40/ServiceStack.Redis.dll",
-        "lib/net40/ServiceStack.Redis.XML",
-        "ServiceStack.Redis.4.0.56.nupkg",
-        "ServiceStack.Redis.4.0.56.nupkg.sha512",
-        "ServiceStack.Redis.nuspec"
-      ]
-    },
-    "ServiceStack.Text/4.0.56": {
-      "type": "package",
-      "sha512": "SeUzXAxJm+kmvxi8kh47jzDmoxv90pXa98EDh/S/MJN1CzhBPb1KTMyLitzwmXTHPoSjul61v3HW3h0wBo+rYg==",
-      "files": [
-        "lib/net40/ServiceStack.Text.dll",
-        "lib/net40/ServiceStack.Text.xml",
-        "lib/portable-net45+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Text.dll",
-        "lib/sl5/ServiceStack.Text.dll",
-        "lib/sl5/ServiceStack.Text.xml",
-        "ServiceStack.Text.4.0.56.nupkg",
-        "ServiceStack.Text.4.0.56.nupkg.sha512",
-        "ServiceStack.Text.nuspec"
+        "lib/LICENSE.txt",
+        "lib/net45/RethinkDb.Newtonsoft.dll",
+        "lib/net45/RethinkDb.Newtonsoft.dll.mdb",
+        "lib/README.md",
+        "lib/RELEASE-NOTES.md",
+        "rethinkdb-net-newtonsoft.0.12.1.nupkg",
+        "rethinkdb-net-newtonsoft.0.12.1.nupkg.sha512",
+        "rethinkdb-net-newtonsoft.nuspec"
       ]
     },
     "System.Collections/4.0.0": {
@@ -6754,11 +6761,11 @@
       "Microsoft.Extensions.Logging >= 1.0.0-rc1-final",
       "Microsoft.Extensions.Logging.Console >= 1.0.0-rc1-final",
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
-      "Newtonsoft.Json >= 8.0.4-beta1"
+      "Newtonsoft.Json >= 8.0.4-beta1",
+      "rethinkdb-net-newtonsoft >= 0.12.1"
     ],
     "DNX,Version=v4.5.1": [
-      "RabbitMQ.Client >= 3.6.2",
-      "ServiceStack.Redis >= 4.0.56"
+      "RabbitMQ.Client >= 3.6.2"
     ]
   }
 }

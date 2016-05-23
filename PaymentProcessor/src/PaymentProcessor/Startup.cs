@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
-using ServiceStack.Redis;
-using Microsoft.Extensions.PlatformAbstractions;
 using PaymentProcessor.Services;
+using System.Net;
 
 namespace PaymentProcessor
 {
@@ -33,11 +28,11 @@ namespace PaymentProcessor
             // Add framework services.
             services.AddMvc();
             services.AddSingleton<IConnectionFactory>(c => new ConnectionFactory() { HostName = "192.168.99.100" });
-            services.AddSingleton<IRedisClientsManager>(c => new RedisManagerPool("192.168.99.100:6379"));
-            services.AddSingleton(c => new PaymentStore(c.GetService<IRedisClientsManager>()));
+            services.AddSingleton<RethinkDb.IConnectionFactory>(c => new RethinkDb.ConnectionFactories.DefaultConnectionFactory(new EndPoint[] { new IPEndPoint(IPAddress.Parse("192.168.99.100"), 28015) }));
+            services.AddSingleton(c => new PaymentStore(c.GetService<RethinkDb.IConnectionFactory>(), "queues"));
             services.AddSingleton(c => new PaymentQueues(c.GetService<IConnectionFactory>(), c.GetService<PaymentStore>()));
 
-            services.BuildServiceProvider().GetService<Services.PaymentQueues>().Connect();
+            services.BuildServiceProvider().GetService<PaymentQueues>().Connect();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

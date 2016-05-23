@@ -23,7 +23,7 @@ namespace PaymentProcessor.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(store);
+            return View(store.List());
         }
 
         [HttpPost]
@@ -32,7 +32,7 @@ namespace PaymentProcessor.Controllers
             var id = Request.Form["id"];
             var success = Request.Form["result"] == "Success";
             queues.HandleResponse(id, success);
-            return View("index", store);
+            return View("index", store.List());
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using RethinkDb.Spec;
+using System;
 
 namespace PaymentProcessor.Models
 {
@@ -13,6 +12,7 @@ namespace PaymentProcessor.Models
             Status = PaymentStatus.Pending;
         }
 
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
         public int Amount { get; set; }
         public string OrderNumber { get; set; }

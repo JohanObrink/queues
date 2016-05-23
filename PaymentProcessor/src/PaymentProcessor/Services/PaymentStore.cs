@@ -1,23 +1,15 @@
 ﻿using PaymentProcessor.Models;
-using ServiceStack.Redis;
-using ServiceStack.Redis.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RethinkDb;
 
 namespace PaymentProcessor.Services
 {
-    public class PaymentStore : ManagedList<Payment>
+    public class PaymentStore : RethinkDbTable<Payment>
     {
-        public PaymentStore(IRedisClientsManager manager) : base(manager, "payments")
+        public PaymentStore(IConnectionFactory connectionFactory, string dbName) : base(connectionFactory, dbName)
         {}
-
-        public PaymentStore Update(Payment p)
-        {
-            this.Remove(p);
-            this.Add(p);
-            return this;
-        }
     }
 }

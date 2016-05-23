@@ -83,17 +83,17 @@ namespace PaymentProcessor.Services
 
             // send to some service
             payment.SentForPayment = DateTime.Now;
-            store.Add(payment);
+            store.Set(payment);
 
             channel.BasicAck(e.DeliveryTag, false);
         }
 
         public void HandleResponse(string id, bool success)
         {
-            var payment = store.First(p => p.Id == id);
+            var payment = store.Get(id);
             payment.ResponseRecieved = DateTime.Now;
             payment.Status = (success) ? PaymentStatus.Success : PaymentStatus.Fail;
-            store.Update(payment);
+            store.Update(p => p.Id, payment);
             Send(payment);
         }
 
