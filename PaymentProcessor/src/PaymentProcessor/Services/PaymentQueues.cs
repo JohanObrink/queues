@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using PaymentProcessor.Models;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -13,20 +14,23 @@ namespace PaymentProcessor.Services
     {
         private readonly IConnectionFactory rabbitMQConnectionFactory;
         private readonly PaymentStore store;
+        private readonly ILogger logger;
         private IConnection connection = null;
         private IModel channel = null;
         private EventingBasicConsumer consumer = null;
         private int retries = 0;
         private Queue<Payment> pending = new Queue<Payment>();
+        private Exception ex;
 
         private static readonly string INCOMING = "payments";
         private static readonly string SUCCESSFUL = "successful-payments";
         private static readonly string FAILED = "failed-payments";
 
-        public PaymentQueues(IConnectionFactory rabbitMQConnectionFactory, PaymentStore store)
+        public PaymentQueues(IConnectionFactory rabbitMQConnectionFactory, PaymentStore store, ILoggerFactory loggerFactory)
         {
             this.rabbitMQConnectionFactory = rabbitMQConnectionFactory;
             this.store = store;
+            this.logger = loggerFactory.CreateLogger("PaymentQueues");
         }
 
         private IModel CreateQueue(string name)
@@ -42,13 +46,14 @@ namespace PaymentProcessor.Services
             {
                 try
                 {
-                    Console.WriteLine("Connecting to RabbitMQ, attempt: " + (++retries));
+                    logger.LogDebug("Connecting to RabbitMQ, attempt: " + (++retries));
                     connection = rabbitMQConnectionFactory.CreateConnection();
 
                     channel = connection.CreateModel();
-                    channel.QueueDeclare(queue: INCOMING, durable: false, exclusive: false, autoDelete: false, arguments: null);
-                    channel.QueueDeclare(queue: SUCCESSFUL, durable: false, exclusive: false, autoDelete: false, arguments: null);
-                    channel.QueueDeclare(queue: FAILED, durable: false, exclusive: false, autoDelete: false, arguments: null);
+                    channel.BasicQos(0, 1, false);
+                    channel.QueueDeclare(queue: INCOMING, durable: true, exclusive: false, autoDelete: false, arguments: null);
+                    channel.QueueDeclare(queue: SUCCESSFUL, durable: true, exclusive: false, autoDelete: false, arguments: null);
+                    channel.QueueDeclare(queue: FAILED, durable: true, exclusive: false, autoDelete: false, arguments: null);
 
                     consumer = new EventingBasicConsumer(channel);
                     consumer.Registered += Consumer_Registered;
@@ -59,7 +64,8 @@ namespace PaymentProcessor.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Connection failed: " + ex.Message);
+                    this.ex = ex;
+                    logger.LogError("Connection failed: " + ex.Message);
                     Thread.Sleep(2000);
                     Connect();
                     return;
@@ -70,7 +76,7 @@ namespace PaymentProcessor.Services
 
         private void Consumer_Registered(object sender, ConsumerEventArgs e)
         {
-            Console.WriteLine("Consumer registered: " + e.ConsumerTag);
+            logger.LogDebug("Consumer registered: " + e.ConsumerTag);
         }
         private void Consumer_Received(object sender, BasicDeliverEventArgs e)
         {

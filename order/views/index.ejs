@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form onsubmit="createOrder(parseInt(this.amount.value, 10)); return false">
+      <input type="number" name="amount" />
+      <button>Create order</button>
+    </form>
+    <script src="javascripts/index.js"></script>
+  </body>
+</html>

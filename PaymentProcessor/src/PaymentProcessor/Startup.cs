@@ -30,7 +30,7 @@ namespace PaymentProcessor
             services.AddSingleton<IConnectionFactory>(c => new ConnectionFactory() { HostName = "192.168.99.100" });
             services.AddSingleton<RethinkDb.IConnectionFactory>(c => new RethinkDb.ConnectionFactories.DefaultConnectionFactory(new EndPoint[] { new IPEndPoint(IPAddress.Parse("192.168.99.100"), 28015) }));
             services.AddSingleton(c => new PaymentStore(c.GetService<RethinkDb.IConnectionFactory>(), "queues"));
-            services.AddSingleton(c => new PaymentQueues(c.GetService<IConnectionFactory>(), c.GetService<PaymentStore>()));
+            services.AddSingleton(c => new PaymentQueues(c.GetService<IConnectionFactory>(), c.GetService<PaymentStore>(), c.GetService< ILoggerFactory>()));
 
             services.BuildServiceProvider().GetService<PaymentQueues>().Connect();
         }
@@ -39,6 +39,7 @@ namespace PaymentProcessor
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 
             app.UseIISPlatformHandler();

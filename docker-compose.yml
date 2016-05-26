@@ -1,9 +1,28 @@
-node:
-  build: ./node
+order:
+  build: ./order
+  environment:
+    - 'PORT=3000'
+    - 'RABBITMQ=rabbitmq'
+  ports:
+    - "3000:3000"
+  links:
+    - rabbitmq
+pack:
+  build: ./pack
   environment:
     - 'PORT=4000'
+    - 'RABBITMQ=rabbitmq'
   ports:
     - "4000:4000"
+  links:
+    - rabbitmq
+fail:
+  build: ./fail
+  environment:
+    - 'PORT=5000'
+    - 'RABBITMQ=rabbitmq'
+  ports:
+    - "5000:5000"
   links:
     - rabbitmq
 rabbitmq:
