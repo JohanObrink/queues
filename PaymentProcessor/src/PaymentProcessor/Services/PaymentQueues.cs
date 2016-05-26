@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using PaymentProcessor.Models;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -21,6 +23,7 @@ namespace PaymentProcessor.Services
         private int retries = 0;
         private Queue<Payment> pending = new Queue<Payment>();
         private Exception ex;
+        private readonly JsonSerializer serializer;
 
         private static readonly string INCOMING = "payments";
         private static readonly string SUCCESSFUL = "successful-payments";
@@ -31,6 +34,11 @@ namespace PaymentProcessor.Services
             this.rabbitMQConnectionFactory = rabbitMQConnectionFactory;
             this.store = store;
             this.logger = loggerFactory.CreateLogger("PaymentQueues");
+
+            this.serializer = new JsonSerializer()
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
         }
 
         private IModel CreateQueue(string name)
@@ -111,7 +119,7 @@ namespace PaymentProcessor.Services
             while(pending.Count > 0)
             {
                 var payment = pending.Dequeue();
-                var message = JObject.FromObject(payment).ToString();
+                var message = JObject.FromObject(payment, serializer).ToString();
                 var body = Encoding.UTF8.GetBytes(message);
                 var type = payment.Status == PaymentStatus.Success ? SUCCESSFUL : FAILED;
                 channel.BasicPublish(exchange: "", routingKey: type, basicProperties: null, body: body);

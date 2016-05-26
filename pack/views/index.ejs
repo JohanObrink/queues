@@ -6,6 +6,9 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <ul>
+      <% items.forEach(item => {%>
+        <li><pre><%= JSON.stringify(item, null, 2) %></pre></li>
+      <%})%>
   </body>
 </html>

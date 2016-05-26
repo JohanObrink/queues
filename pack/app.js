@@ -4,6 +4,7 @@ const favicon = require('serve-favicon')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const queuelistener = require('./services/queuelistener')
 
 const routes = require('./routes/index')
 
@@ -53,6 +54,8 @@ app.use((err, req, res, next) => {
     error: {}
   })
 })
+
+queuelistener.listen()
 
 
 module.exports = app

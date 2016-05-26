@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/orders', (req, res, next) => {
   return orderService.enqueuePayment(req.body)
-    .then(order => res.send(201, order) || next())
+    .then(order => res.status(201).send(order) || next())
     .catch(err => next(err))
 })
 
